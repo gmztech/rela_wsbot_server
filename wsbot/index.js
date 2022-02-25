@@ -20,7 +20,6 @@ const eventHandler = (io) => {
         let wsBo;
         const args = ['--no-sandbox', '--disable-setuid-sandbox']
         const puppeteerArgs = { headless: true, args }
-        // await User.findByIdAndUpdate(userId, { $set: { tmpss: undefined } }, { new: true })
         if (user.tmpss) {
             wsBot = new Client({ puppeteer: puppeteerArgs, session: user.tmpss });
             wsBot.initialize();
