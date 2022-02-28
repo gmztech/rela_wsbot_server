@@ -29,7 +29,7 @@ exports.checkSession = async ctx => {
 exports.login = async ctx => {
   try {
     const body = ctx.request.body
-    let user = await User.findOne({ email: body.email, type: body.type })
+    let user = await User.findOne({ email: body.email, type: 'admin' })
     if (!user)
       return ctx.body = { error: `Este usuario no existe` }
     const verifyPass = await bcrypt.compare(body.password, user.password)

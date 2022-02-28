@@ -2,20 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
-const AtcOrderSchema = new Schema({
-  order: String,
-  subtotal: Number,
-  total: Number,
+const BotOrderSchema = new Schema({
+  order: String, 
   created: Number,
   deliveryCost: Number,
-  canceledReason: String,
+  orderDetail: String,
   atcComment: String,
   dealer: {},
   admin: {},
-  cupon: {},
-  products: [],
-  paymentMethod: {},
-  bills: String,
   store: {},
   user: {},
   receiving: {},
@@ -31,11 +25,11 @@ const AtcOrderSchema = new Schema({
   internal: {
     type: String,
     enum: [
-      "store",
-      "user"
+      "recado",
+      "interno_tienda",
+      "rela_go"
     ],
-  },
-
+  }
 });
-
-module.exports = mongoose.model("AtcOrder", AtcOrderSchema);
+BotOrderSchema.set('autoIndex', false);
+module.exports = mongoose.model("BotOrder", BotOrderSchema);

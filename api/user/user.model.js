@@ -3,6 +3,11 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
  
 const UserSchema = new Schema({
+  tmpss: String,
+  wsBotHistory: [{
+    connectedAt: Number,
+    disconnectedAt: Number,
+  }],
   created: { type: Number, required: true },
   name: { type: String, required: true },
   type: { type: String, required: true, enum: ['admin', 'store', 'user', 'dealer']},
@@ -35,13 +40,17 @@ const UserSchema = new Schema({
   atcCheckout: { type: Boolean },
   productDisclaimer: { type: String },
   hidePrices: Boolean,
-  username: String
+  username: String,
+  creatingOrder: String
 });
 
 UserSchema 
   .virtual( 'public' )
   .get( function() {
     return {
+      creatingOrder: this.creatingOrder,
+      tmpss: this.tmpss,
+      wsBotHistory: this.wsBotHistory,
       id: this._id,
       username: this.username,
       productDisclaimer: this.productDisclaimer,
