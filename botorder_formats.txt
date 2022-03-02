@@ -1,68 +1,17 @@
 *PEDIDO INTERNO:*
-*_Todos los campos son obligatorios_*
-En los campos *_comercio:* y *_realer:* se deben agregar sus números de telefono tal cual como aparecen en el cpanel (módulo de entidades)
 ---
-_realer:
-_comercio:
+_realer: 
+_comercio: 
 _pedido: 
-_gps -> 
 _delivery: 
 ---
-_entrega_nombre:
-_entrega_telefono:
-_entrega_gps -> 
-_entrega_comentarios:
-
-PEDIDO INTERNO:
-Todos los campos son obligatorios
-En los campos _comercio: y _realer: se deben agregar sus números de telefono tal cual como aparecen en el cpanel (módulo de entidades)
----
-_realer: 56995855574
-_comercio: 56995855574
-_pedido: Una cocacola
-_gps -> https://www.google.com/maps/place/Google+Maps+Negocio+Posicionamiento+Pymes+Emprendedores+Metro+Manquehue/@-33.4079986,-70.5755944,16z/data=!4m9!1m2!2m1!1sgoogle+maps!3m5!1s0x9662cf6f4fe8a6eb:0xf6eaee3cbbdf330c!8m2!3d-33.4103988!4d-70.5704231!15sCgtnb29nbGUgbWFwcyIDiAEBWg0iC2dvb2dsZSBtYXBzkgEQd2Vic2l0ZV9kZXNpZ25lcpoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VRMmVrMTFSbkpCUlJBQg
-_delivery: 1.5
----
-_entrega_nombre: Isaias
-_entrega_telefono: 5899665547
-_entrega_gps ->  https://www.google.com/maps/place/Google+Maps+Negocio+Posicionamiento+Pymes+Emprendedores+Metro+Manquehue/@-33.4079986,-70.5755944,16z/data=!4m9!1m2!2m1!1sgoogle+maps!3m5!1s0x9662cf6f4fe8a6eb:0xf6eaee3cbbdf330c!8m2!3d-33.4103988!4d-70.5704231!15sCgtnb29nbGUgbWFwcyIDiAEBWg0iC2dvb2dsZSBtYXBzkgEQd2Vic2l0ZV9kZXNpZ25lcpoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VRMmVrMTFSbkpCUlJBQg
+_entrega_nombre: 
+_entrega_telefono: 
+_entrega_dirección: 
 _entrega_comentarios: 
 
-{
-  dealer: [
-    "_realer",
-    " 5825652544",
-  ],
-  store: [
-    "_comercio",
-    " 5825652544",
-  ],
-  orderDetail: [
-    "_pedido",
-    " Una cocacola",
-  ],
-  "store.gps": [
-    "_gps",
-    "https://www.google.com/maps/place/Google+Maps+Negocio+Posicionamiento+Pymes+Emprendedores+Metro+Manquehue/@-33.4079986,-70.5755944,16z/data=!4m9!1m2!2m1!1sgoogle+maps!3m5!1s0x9662cf6f4fe8a6eb:0xf6eaee3cbbdf330c!8m2!3d-33.4103988!4d-70.5704231!15sCgtnb29nbGUgbWFwcyIDiAEBWg0iC2dvb2dsZSBtYXBzkgEQd2Vic2l0ZV9kZXNpZ25lcpoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VRMmVrMTFSbkpCUlJBQg",
-  ],
-  deliveryCost: [
-    "_delivery",
-    " 1.5",
-  ],
-  "receiving.name": [
-    "_entrega_nombre",
-    " Isaias",
-  ],
-  "receiving.phone": [
-    "_entrega_telefono",
-    " 5899665547",
-  ],
-  "receiving.gps": [
-    "_entrega_gps",
-    " https://www.google.com/maps/place/Google+Maps+Negocio+Posicionamiento+Pymes+Emprendedores+Metro+Manquehue/@-33.4079986,-70.5755944,16z/data=!4m9!1m2!2m1!1sgoogle+maps!3m5!1s0x9662cf6f4fe8a6eb:0xf6eaee3cbbdf330c!8m2!3d-33.4103988!4d-70.5704231!15sCgtnb29nbGUgbWFwcyIDiAEBWg0iC2dvb2dsZSBtYXBzkgEQd2Vic2l0ZV9kZXNpZ25lcpoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VRMmVrMTFSbkpCUlJBQg",
-  ],
-  atcComment: [
-    "_entrega_comentarios",
-    "",
-  ],
-}
+Mensaje a tienda
+Hurra ${updatedOrder.store.name}, te hemos asignado un realer 🤙📦🚴🎉🥳!\n*Pedido:*\n ${updatedOrder.orderDetail}\n*Realer:*\n${updatedOrder.dealer.name} ${updatedOrder.dealer.lastName}
+
+Mensaje a repartidor
+Hurra ${updatedOrder.store.name}, te hemos asignado una orden 🤙📦🚴🎉🥳!\n*Pedido:*\n ${updatedOrder.orderDetail}\n*Comercio:*\n${updatedOrder.store.name}\n*Dirección de entrega:*\n${updatedOrder.receiving.address}

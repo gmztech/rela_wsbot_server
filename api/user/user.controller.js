@@ -55,3 +55,11 @@ exports.update = async ctx => {
   const edited = await User.findByIdAndUpdate({ _id: userId }, { $set: body }, { new: true })
   ctx.body = edited.public
 }
+
+exports.getSingle = async ctx => {
+  const { userId } = ctx.params
+  let user = await User.findOne({ _id: userId })
+  user = user._doc
+  delete user.password
+  ctx.body = user
+}

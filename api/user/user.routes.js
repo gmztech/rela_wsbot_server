@@ -10,6 +10,7 @@ module.exports = Router => {
   
     router
       .get('/session', controller.checkSession)
+      .get('/:userId', controller.getSingle)
       .put('/:userId', controller.update)
       .post('/login', controller.login)
       

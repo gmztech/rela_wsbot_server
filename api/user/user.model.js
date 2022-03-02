@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const wsBotUtils = require('./../../wsbot/wsbotUtils');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
  
@@ -41,14 +42,14 @@ const UserSchema = new Schema({
   productDisclaimer: { type: String },
   hidePrices: Boolean,
   username: String,
-  creatingOrder: String
+  creatingWsBotOrder: wsBotUtils.internalOrderObj
 });
 
 UserSchema 
   .virtual( 'public' )
   .get( function() {
     return {
-      creatingOrder: this.creatingOrder,
+      creatingWsBotOrder: this.creatingOrder,
       tmpss: this.tmpss,
       wsBotHistory: this.wsBotHistory,
       id: this._id,

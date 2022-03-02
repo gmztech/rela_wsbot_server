@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const wsBotUtils = require('./../../wsbot/wsbotUtils');
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
@@ -11,12 +12,16 @@ const BotOrderSchema = new Schema({
   dealer: {},
   admin: {},
   store: {},
-  user: {},
-  receiving: {},
+  receiving: {
+    name: String,
+    phone: String,
+    address: String
+  },
   request: {},
   status: {
     type: String,
     enum: [
+      "creating",
       "started",
       "completed",
       "canceled",
@@ -24,11 +29,7 @@ const BotOrderSchema = new Schema({
   },
   internal: {
     type: String,
-    enum: [
-      "recado",
-      "interno_tienda",
-      "rela_go"
-    ],
+    enum: Object.keys(wsBotUtils.internalOrderObj).map(type => type ),
   }
 });
 BotOrderSchema.set('autoIndex', false);
