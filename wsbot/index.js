@@ -62,7 +62,7 @@ const eventHandler = (io) => {
         }) 
 
         //wsbot listeners
-        user.wsBot.on('ready', () => {
+        user.wsBot.on('ready', async () => {
             user.socket.emit('ws_botAuthenticated', { wsBotAuthenticated: true })
             console.log(user.name, ': connection ready')
         });
@@ -294,6 +294,11 @@ const parseOrderBody = async(body, orderType, tool) => {
             },
             store_message: () => {
                 return `Hurra *${body.store.name}*, te hemos asignado un realer 🤙📦🚴🎉🥳!\n*Pedido:*\n ${body.orderDetail}\n*Realer:*\n${body.dealer.name} ${body.dealer.lastName}`
+            }
+        },
+        'recado': {
+            parser: async() => {
+                return null
             }
         }
     }

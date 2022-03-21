@@ -6,18 +6,17 @@ const ObjectId = Schema.ObjectId;
 const BotOrderSchema = new Schema({
   order: String, 
   created: Number,
-  deliveryCost: Number,
   orderDetail: String,
   atcComment: String,
   dealer: {},
   admin: {},
   store: {},
+  deliveryZone: {},
   receiving: {
     name: String,
     phone: String,
     address: String
   },
-  request: {},
   status: {
     type: String,
     enum: [

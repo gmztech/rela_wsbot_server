@@ -9,6 +9,7 @@ module.exports = Router => {
     });
   
     router
+      .post('/findusers', controller.findUsers)
       .get('/session', controller.checkSession)
       .get('/:userId', controller.getSingle)
       .put('/:userId', controller.update)

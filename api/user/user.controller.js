@@ -2,8 +2,10 @@
 
 const { locale } = require('../../config').server
 const User = require('./user.model') 
+const {Plan} = require('../general/general.model') 
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+
 
 exports.checkSession = async ctx => {
   try {
@@ -62,4 +64,28 @@ exports.getSingle = async ctx => {
   user = user._doc
   delete user.password
   ctx.body = user
+}
+
+exports.findUsers = async ctx => {
+  const {query} = ctx.request.body
+  const { user } = ctx.request
+  if (!user || user.type === 'user') {
+    query['enabled'] = true
+  }
+  let users = await User.find(query).populate('plan')
+  // gets the public document
+  users = users.map(u => Object.assign({}, u.public, {
+    plan: u.public.plan ? u.public.plan._doc : undefined
+  }))
+  if (!user || user.type === 'user') {
+    // sorts firts alphabetically
+    users = users.sort((a, b) => a.name.localeCompare(b.name))
+    // then by position
+    users = users.sort((a, b) => {
+      const aHas = typeof a.position !== 'undefined';
+      const bHas = typeof b.position !== 'undefined';
+      return (bHas - aHas) || (aHas === true && a.position - b.position) || 0;
+    });
+  }
+  ctx.body = users
 }

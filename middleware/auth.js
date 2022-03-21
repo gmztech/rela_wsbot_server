@@ -29,6 +29,9 @@ module.exports = async (ctx, next) => {
         if ( !user )
             return ctx.body = { error: `Invalid token` }
         
+        if(user.type !== 'admin') {
+            return ctx.body = { error: `Dont have persmissino` }
+        }
         ctx.request.user = user.public
         return next()
 
