@@ -8,6 +8,7 @@ module.exports = Router => {
 
   router
     .get('/', controller.getAll)
+    .post('/zones', controller.getZones)
     
   return router;
 };

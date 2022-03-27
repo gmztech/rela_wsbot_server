@@ -1,6 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # dev img files
+WWebJS
+.wwebjs_auth
 qr_codes
 backup_doessentials
 backup_rela

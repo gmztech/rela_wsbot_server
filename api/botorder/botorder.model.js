@@ -11,6 +11,7 @@ const BotOrderSchema = new Schema({
   dealer: {},
   admin: {},
   store: {},
+  deliveryCost: Number,
   deliveryZone: {},
   receiving: {
     name: String,
@@ -29,7 +30,9 @@ const BotOrderSchema = new Schema({
   internal: {
     type: String,
     enum: Object.keys(wsBotUtils.internalOrderObj).map(type => type ),
-  }
+  },
+  products: [],
+  total: Number
 });
 BotOrderSchema.set('autoIndex', false);
 module.exports = mongoose.model("BotOrder", BotOrderSchema);

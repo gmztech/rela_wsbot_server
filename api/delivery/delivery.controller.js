@@ -7,3 +7,10 @@ exports.getAll = async ctx => {
   deliveries = deliveries.map(d => d._doc)
   ctx.body = deliveries
 }
+
+exports.getZones = async ctx => {
+  const {query} = ctx.request.body
+  let deliveries = await Delivery.find(query)
+  deliveries = deliveries.map(d => d._doc)
+  ctx.body = deliveries
+}
